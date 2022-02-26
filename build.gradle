@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'de.thetaphi.forbiddenapis' version '3.2'
+}
+
+group 'de.kiwiwings'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+
+forbiddenApis {
+    bundledSignatures = [ 'jdk-unsafe', 'jdk-deprecated', 'jdk-internal', 'jdk-non-portable', 'jdk-reflection' ]
+    ignoreFailures = false
+    // forbiddenapis bundled signatures max supported version is 14
+    targetCompatibility = JavaVersion.VERSION_14
+}
